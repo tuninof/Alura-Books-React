@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react'
 import styles from './Pesquisa.module.css'
-import { livros } from './dadosPesqusa'
+import { getLivros } from '../../servicos/livros'
 
 const Pesquisa = () => {
     const [livrosPesquisado, setLivrosPesquisado ] = useState([])
+    const [livros, setLivros] = useState([])
+
+    useEffect( () => {
+        fetchLivros()
+    }, [])
+
+    async function fetchLivros() {
+        const livrosApi = await getLivros()
+        setLivros(livrosApi)
+    }
     
     const PesquisarLivro = (evento) => {
         const textoDigitado = evento.target.value.toLowerCase()  //toLowerCase => usado para não haver diferenciação de letra maiúscula digitado pelo usuário

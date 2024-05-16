@@ -8,4 +8,11 @@
 .opcao {
     list-style: none;
     cursor: pointer;
+
 }
+
+.link {
+    text-decoration: none;
+    color: #000000;
+}
+
